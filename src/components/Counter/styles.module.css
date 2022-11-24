@@ -1,0 +1,36 @@
+.countersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 46rem;
+    max-width: 46rem;
+    margin-top: 4rem;
+    border-bottom-width: 1rem;
+    border-bottom: 1px solid var(--gray-400);
+}
+
+.counter {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.counterText {
+    color: var(--blue);
+    font-size: 0.87rem;
+    margin-right: 0.5rem;
+}
+
+.counterNumberContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 19px;
+    border-radius: 999px;
+    background-color: var(--gray-400);
+}
+
+.counterNumber {
+    color: var(--gray-200);
+    font-size: 0.87rem;
+}
