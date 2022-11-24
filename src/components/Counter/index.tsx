@@ -5,9 +5,9 @@ type ICounterProps = {
     done: number;
 }
 
-export function Counter({ total, done }: ICounterProps) {
+export function Counter({ total, done }: ICounterProps) {   
     return (
-        <div className={styles.countersContainer}>
+        <div className={styles.countersContainer} style={total > 0 ? { borderBottomWidth: 0} : undefined}>
             <div className={styles.counter}>
                 <strong className={styles.counterText}>Tarefas criadas</strong>
                 <span className={styles.counterNumberContainer}>
