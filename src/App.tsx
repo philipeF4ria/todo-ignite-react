@@ -21,6 +21,19 @@ function App() {
   const [taskText, setTaskText] = useState<string>('');
   const [tasks, setTasks] = useState<ITasks[]>([]);
   
+  const todoCount = tasks.reduce((accumulator, task) => {
+    if (task.isDone) {
+      accumulator.done++;
+    }
+
+    accumulator.total++;
+
+    return accumulator;
+  }, {
+    total: 0,
+    done: 0,
+  });
+
   function handleCreateTask(event: FormEvent) {
     event.preventDefault();
 
@@ -74,23 +87,23 @@ function App() {
         </button>
       </form>
       <main className={styles.body}>
-        <Counter total={0} done={0} />
+        <Counter total={todoCount.total} done={todoCount.done} />
         {
-          tasks.length === 0 ?
+          tasks.length === 0 
+            ?
               <div className={styles.emptyListContainer}>
                 <img src={clipboard} alt="Clipboard" className={styles.emptyListIcon}/>
                 <strong className={styles.emptyListText}>Você ainda não tem tarefas cadastradas</strong>
                 <p className={styles.emptyListText}>Crie tarefas e organize seus itens a fazer</p>
               </div>
             :
-            tasks.map(task => <Task
-              key={task.id}
-              text={task.text}
-              onTaskDone={() => handleToggleTaskDone(task.id)}
-              isDone={task.isDone}
-              onRemove={() => handleRemoveTask(task.id)}
-            />
-          )
+              tasks.map(task => <Task
+                key={task.id}
+                text={task.text}
+                onTaskDone={() => handleToggleTaskDone(task.id)}
+                isDone={task.isDone}
+                onRemove={() => handleRemoveTask(task.id)}
+              />)
         }
         
       </main>

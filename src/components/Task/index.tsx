@@ -14,18 +14,20 @@ export function Task({ text, isDone, onRemove, onTaskDone }: ITaskProps) {
     return (
         <div className={styles.task}>
             {
-                isDone === false ? (<Circle 
-                    size={24} 
-                    className={styles.circleIcon} 
-                    onClick={onTaskDone}
-                />)
-                :
-                (<CheckCircle 
-                    size={24} 
-                    className={styles.circleIcon}
-                    onClick={onTaskDone}
-                    style={{ color: '#5E60CE' }}
-                />)
+                isDone === false 
+                    ? 
+                    <Circle 
+                        size={24} 
+                        className={styles.circleIcon} 
+                        onClick={onTaskDone}
+                    />
+                    :
+                    <CheckCircle 
+                        size={24} 
+                        className={styles.circleIcon}
+                        onClick={onTaskDone}
+                        style={{ color: '#5E60CE' }}
+                    />
             }
             <p 
                 className={styles.textTask}
