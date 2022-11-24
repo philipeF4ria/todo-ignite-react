@@ -39,6 +39,10 @@ function App() {
     setTaskText('');
   }
 
+  function handleRemoveTask(id: string) {
+    setTasks(prevState => prevState.filter(task => task.id !== id));
+  }
+
   return (
     <>
       <Header />
@@ -61,7 +65,13 @@ function App() {
         <Counter total={0} done={0} />
         {
           tasks.length > 0 ? 
-            tasks.map(task => <Task key={task.id} text={task.text} isDone={task.isDone}/>) : 
+            tasks.map(task => <Task 
+                key={task.id} 
+                text={task.text} 
+                isDone={task.isDone}
+                onRemove={() => handleRemoveTask(task.id)}
+              />
+            ) : 
             (
               <div className={styles.emptyListContainer}>
                 <img src={clipboard} alt="Clipboard" className={styles.emptyListIcon}/>
