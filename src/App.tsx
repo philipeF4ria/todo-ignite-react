@@ -39,6 +39,18 @@ function App() {
     setTaskText('');
   }
 
+  function handleToggleTaskDone(id: string) {
+    const updateTask = tasks.map(task => {
+      if (task.id === id) {
+        task.isDone = !task.isDone;
+      }
+
+      return task;
+    })
+
+    setTasks(updateTask);
+  }
+
   function handleRemoveTask(id: string) {
     setTasks(prevState => prevState.filter(task => task.id !== id));
   }
@@ -64,21 +76,21 @@ function App() {
       <main className={styles.body}>
         <Counter total={0} done={0} />
         {
-          tasks.length > 0 ? 
-            tasks.map(task => <Task 
-                key={task.id} 
-                text={task.text} 
-                isDone={task.isDone}
-                onRemove={() => handleRemoveTask(task.id)}
-              />
-            ) : 
-            (
+          tasks.length === 0 ?
               <div className={styles.emptyListContainer}>
                 <img src={clipboard} alt="Clipboard" className={styles.emptyListIcon}/>
                 <strong className={styles.emptyListText}>Você ainda não tem tarefas cadastradas</strong>
                 <p className={styles.emptyListText}>Crie tarefas e organize seus itens a fazer</p>
               </div>
-            )
+            :
+            tasks.map(task => <Task
+              key={task.id}
+              text={task.text}
+              onTaskDone={() => handleToggleTaskDone(task.id)}
+              isDone={task.isDone}
+              onRemove={() => handleRemoveTask(task.id)}
+            />
+          )
         }
         
       </main>
