@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { PlusCircle } from 'phosphor-react';
 import uuid from 'react-uuid';
 
@@ -19,7 +19,15 @@ type ITasks = {
 
 function App() {
   const [taskText, setTaskText] = useState<string>('');
-  const [tasks, setTasks] = useState<ITasks[]>([]);
+  const [tasks, setTasks] = useState<ITasks[]>(() => {
+    const storedStateAsJson = localStorage.getItem('@todo:tasks');
+
+    if (storedStateAsJson) {
+      return JSON.parse(storedStateAsJson);
+    }
+
+    return []
+  });
   
   const todoCount = tasks.reduce((accumulator, task) => {
     if (task.isDone) {
@@ -33,6 +41,10 @@ function App() {
     total: 0,
     done: 0,
   });
+
+  useEffect(() => {
+    localStorage.setItem('@todo:tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   function handleCreateTask(event: FormEvent) {
     event.preventDefault();
@@ -48,6 +60,7 @@ function App() {
       text: taskText,
       isDone: false,
     }]);
+
 
     setTaskText('');
   }
