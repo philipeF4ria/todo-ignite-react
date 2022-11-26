@@ -12,16 +12,16 @@
 
 .form {
     display: flex;
-    width: 46rem;
-    max-width: 46rem;
+    width: 52%;
+    max-width: 52%;
     height: 3.3rem;
     margin: -30px auto;
 }
 
 .input {
-    width: 39.87rem;
+    width: 86%;
+    max-width: 86%;
     height: 3.25rem;
-    max-width: 39.87rem;
     outline: none;
     border-radius: 8px;
     background-color: var(--gray-500);
@@ -43,8 +43,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 5.62rem;
+    width: 14%;
+    max-width: 14%;
     height: 3.25rem;
+    padding: 0.5rem;
     background-color: var(--blue-dark);
     border: 1px solid var(--blue-dark);
     border-radius: 8px;
@@ -70,8 +72,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 46rem;
-    max-width: 46rem;
+    width: 52%;
+    max-width: 52%;
     height: 15.25rem;
 }
 
@@ -85,4 +87,10 @@
     color: var(--gray-300);
     font-size: 1rem;
     line-height: 140%;
+}
+
+@media (max-width: 760px) {
+    .textButton {
+        display: none;
+    }
 }

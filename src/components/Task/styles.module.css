@@ -1,8 +1,8 @@
 .task {
     display: flex;
     align-items: center;
-    width: 46rem;
-    max-width: 46rem;
+    width: 52%;
+    max-width: 52%;
     height: 4.5rem;
     background-color: var(--gray-500);
     border-radius: 8px;
