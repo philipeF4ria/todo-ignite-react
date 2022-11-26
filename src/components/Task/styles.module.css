@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     width: 52%;
-    max-width: 52%;
     height: 4.5rem;
     background-color: var(--gray-500);
     border-radius: 8px;
@@ -39,4 +38,16 @@
     color: var(--gray-100);
     line-height: 140%;
     max-width: 80%;
+}
+
+@media (max-width: 760px) {
+    .task {
+        width: 70%;
+    }
+}
+
+@media (max-width: 416px) {
+    .task {
+        width: 80%;
+    }
 }
